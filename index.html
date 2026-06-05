@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TradeNest Marketplace</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="TradeNest home">
+          <span class="brand-mark">TN</span>
+          <span>TradeNest</span>
+        </a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#market">Market</a>
+          <a href="#sell">Sell</a>
+          <a href="#orders">Orders</a>
+        </nav>
+        <div class="top-actions">
+          <button class="icon-button" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+            <span>Aa</span>
+          </button>
+          <button class="cart-button" id="cartButton" aria-label="Open cart">
+            <span>Cart</span>
+            <strong id="cartCount">0</strong>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">Buy. Sell. Grow.</p>
+            <h1>TradeNest</h1>
+            <p>
+              A colorful marketplace app where sellers can list products quickly
+              and buyers can discover useful deals across fashion, tech, home,
+              food, and more.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#market">Shop products</a>
+              <a class="secondary-button" href="#sell">Start selling</a>
+            </div>
+          </div>
+          <div class="hero-board" aria-label="Marketplace summary">
+            <div class="stat-card coral">
+              <span>Live listings</span>
+              <strong id="listingCount">0</strong>
+            </div>
+            <div class="stat-card teal">
+              <span>Cart value</span>
+              <strong id="cartValue">$0</strong>
+            </div>
+            <div class="stat-card gold">
+              <span>Fast checkout</span>
+              <strong>3 min</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="toolbar" id="market">
+          <div>
+            <p class="section-kicker">Marketplace</p>
+            <h2>Find your next favorite product</h2>
+          </div>
+          <div class="search-wrap">
+            <input id="searchInput" type="search" placeholder="Search products, sellers, categories" />
+            <select id="categoryFilter" aria-label="Filter category">
+              <option value="all">All categories</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="category-strip" id="categoryStrip" aria-label="Popular categories"></section>
+
+        <section class="market-grid" id="productGrid" aria-live="polite"></section>
+
+        <section class="sell-band" id="sell">
+          <div class="sell-copy">
+            <p class="section-kicker">Seller desk</p>
+            <h2>List a product in seconds</h2>
+            <p>
+              Add product details, set a price, choose a category, and publish
+              it instantly to the marketplace preview.
+            </p>
+          </div>
+          <form class="sell-form" id="sellForm">
+            <label>
+              Product name
+              <input name="name" required maxlength="48" placeholder="Handmade ceramic mug" />
+            </label>
+            <label>
+              Price
+              <input name="price" required type="number" min="1" step="1" placeholder="29" />
+            </label>
+            <label>
+              Category
+              <select name="category" required>
+                <option value="Home">Home</option>
+                <option value="Tech">Tech</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Food">Food</option>
+                <option value="Sports">Sports</option>
+              </select>
+            </label>
+            <label>
+              Seller name
+              <input name="seller" required maxlength="36" placeholder="Your shop name" />
+            </label>
+            <label class="wide">
+              Description
+              <textarea name="description" required maxlength="140" placeholder="Write a short product description"></textarea>
+            </label>
+            <button class="primary-button wide" type="submit">Publish product</button>
+          </form>
+        </section>
+
+        <section class="orders" id="orders">
+          <div>
+            <p class="section-kicker">Buyer confidence</p>
+            <h2>Simple order flow</h2>
+          </div>
+          <div class="order-steps">
+            <article>
+              <span>01</span>
+              <h3>Discover</h3>
+              <p>Search, filter, and compare seller products from one clean screen.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Add to cart</h3>
+              <p>Build a cart with instant totals and easy quantity controls.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Checkout</h3>
+              <p>Complete a demo order and keep shopping without losing momentum.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="cart-panel" id="cartPanel" aria-hidden="true" aria-label="Shopping cart">
+      <div class="cart-header">
+        <div>
+          <p class="section-kicker">Checkout</p>
+          <h2>Your cart</h2>
+        </div>
+        <button class="icon-button" id="closeCart" aria-label="Close cart">x</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="panelTotal">$0</strong>
+        </div>
+        <button class="primary-button" id="checkoutButton">Checkout</button>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
